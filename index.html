@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>材料儲存期限檢查系統</title>
+    <link rel="icon" href="CAL.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><img src="CAL.ico" alt="CAL Logo" class="logo-img-inline">   材料儲存期限檢查系統</h1>
+        </header>
+
+        <div class="card">
+            <div class="form-section">
+                <div class="form-row">
+                    <div class="form-label">料號</div>
+                    <div class="form-input-group">
+                        <input type="text" id="partNo" class="input-field" placeholder="請輸入料號">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-label">來料DC</div>
+                    <div class="form-input-group">
+                        <input type="text" id="dcCode" class="input-field" placeholder="請輸入來料DC">
+                        <select id="dcFormat" class="select-field">
+                            <option value="YYWW">YYWW</option>
+                            <option value="YYYYMMDD">YYYYMMDD</option>
+                        </select>
+                        <div id="convertedDate" class="converted-date"></div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-label">IQC檢驗期限</div>
+                    <div class="form-input-group form-input-group-aligned">
+                        <input type="text" id="iqcLimit" class="input-field aligned-input" placeholder="請輸入檢驗期限">
+                        <select id="iqcUnit" class="select-field">
+                            <option value="年">年</option>
+                            <option value="月">月</option>
+                            <option value="週">週</option>
+                            <option value="日">日</option>
+                        </select>
+                        <div id="iqcStatus" class="status-badge">期限內</div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-label">總儲存期限</div>
+                    <div class="form-input-group form-input-group-aligned">
+                        <input type="text" id="storageLimit" class="input-field aligned-input" placeholder="請輸入儲存期限">
+                        <select id="storageUnit" class="select-field">
+                            <option value="年">年</option>
+                            <option value="月">月</option>
+                            <option value="週">週</option>
+                            <option value="日">日</option>
+                        </select>
+                        <div id="storageStatus" class="status-badge">期限內</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button id="checkBtn" class="btn btn-primary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 12L10 15L17 8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    檢查
+                </button>
+                <button id="copyBtn" class="btn btn-secondary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    複製結果
+                </button>
+            </div>
+        </div>
+
+        <div id="resultCard" class="result-card">
+            <div id="resultText" class="result-text"></div>
+            <div id="resultExpiry" class="result-expiry"></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div>材料儲存期限檢查系統 v5.0</div>
+        <div>Joye © 2025</div>
+    </div>
+
+    <div id="toast" class="toast">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 12L12 16L16 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 8V16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="toast-message">已複製到剪貼簿</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
